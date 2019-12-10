@@ -1,0 +1,51 @@
+<!--pages/find/find.wxml-->
+<view class="find-container page-section ">
+  <scroll-view scroll-y="true" class="find-box">
+    <block wx:for="{{userList}}" wx:key="index" wx:for-item="user">
+      <view class="head-view">
+        <image bindtap="bindViewTap" class="userinfo-avatar head" src="{{user.headImg}}" mode="cover"></image>
+        <text selectable="false" class="username" decode="false">{{user.username}}</text>
+      </view>
+      <view class="scroll-container">
+        <!-- 横向滑块 -->
+         <view class="scroll-box">
+              <scroll-view class="scroll-view" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+              <view class="page-section page-section-spacing swiper">
+                <swiper class="media" indicator-dots="{{indicatorDots}}" interval="{{interval}}" duration="{{duration}}">
+                  <block wx:for="{{user.images}}" wx:key="item">
+                    <swiper-item>
+                      <image src="{{item}}" class="scroll-image" />
+                    </swiper-item>
+                  </block>
+                </swiper>
+              </view>
+            </scroll-view>
+         <!-- <block wx:if="{{user.media != ''}}">
+            <video class="scroll-view media" src="{{user.media}}"></video>
+          </block>
+          <block wx:else>
+            <scroll-view class="scroll-view" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+              <view class="page-section page-section-spacing swiper">
+                <swiper class="media" indicator-dots="{{indicatorDots}}" interval="{{interval}}" duration="{{duration}}">
+                  <block wx:for="{{user.images}}" wx:key="item">
+                    <swiper-item>
+                      <image src="{{item}}" class="scroll-image" />
+                    </swiper-item>
+                  </block>
+                </swiper>
+              </view>
+            </scroll-view>
+          </block>-->
+        </view> 
+        <view style="width: 95%;">
+        <view class="scroll-foot">
+          <image class="like" src="../../images/icon/like.png"></image>
+          <image class="evaluate" src="../../images/icon/evaluate.png"></image>
+          <image class="share" src="../../images/icon/share.png"></image>
+        </view>
+        </view>
+
+      </view>
+    </block>
+  </scroll-view>
+</view>
